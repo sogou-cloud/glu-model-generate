@@ -1,0 +1,21 @@
+apps:
+  kafka:
+    script: http://cloud.sogou.com/gluscript/yum-install.script
+    entryState: running
+    mountPoint: /kafka-dev/broker-%d
+    initParamters: 
+      yum-repos: http://xxx.repo
+      package: kafka-0.8
+      config: http://xxx.conf
+      port: 8080
+    tags: [kafka]
+
+entries:
+- agent: cloud101612819[3-4].wd.sjs.ss.nop.sogou-op.org
+  install: [kafka]
+  tags: [RHEL6]
+
+fabric: kafka-dev
+metadata:
+  name: kafka
+  product: [hbase-writer,kafka-dev]
